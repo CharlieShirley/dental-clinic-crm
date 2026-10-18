@@ -1295,7 +1295,11 @@ function signedOut() {
   });
   const { data } = await sb.auth.getSession();
   if (location.hash.includes('type=recovery')) { showAuth('reset'); return; }
-  if (data.session) await enter(data.session); else showAuth('login');
-  if (/access_token|error_description/.test(location.hash)) history.replaceState(null, '', backUrl());
+  const hashErr = new URLSearchParams(location.hash.slice(1)).get('error_code');
+  if (data.session) await enter(data.session);
+  else if (hashErr === 'otp_expired') showAuth('login', '這個信件連結已經用過或過期了。如果你之前已經點過一次，信箱其實已經驗證完成，請直接用 Email 和密碼登入；若是重設密碼的連結，請按「忘記密碼」重新寄一封。');
+  else if (hashErr) showAuth('login', '信件連結無法使用，請重新登入或再寄一次。');
+  else showAuth('login');
+  if (/access_token|error_description|error_code/.test(location.hash)) history.replaceState(null, '', backUrl());
 })();
 })();
