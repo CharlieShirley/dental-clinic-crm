@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>牙醫診所管理系統</title>
+<meta name="description" content="牙醫診所的病患管理系統：病患病歷與牙位圖、預約排程、半年洗牙回診提醒、健保與自費結帳、庫存與營運報表。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Condensed:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked">
+<header class="hd">
+  <p class="hd-tag" id="hdTag">牙醫診所的病患管理系統｜病患・預約・牙位紀錄・健保與自費結帳</p>
+  <div class="hd-logo">
+    <img src="images/logo-tooth.svg" width="20" height="20" alt="">
+    <b id="brandName">牙醫診所管理系統</b>
+  </div>
+  <button class="menu-icon" type="button" id="menuBtn" aria-label="開啟選單" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="gnav" aria-label="主選單"><ul id="nav"></ul></nav>
+<nav class="crumb" aria-label="目前位置"><ol id="crumb"></ol></nav>
+<section class="contents">
+  <div class="inner" id="appView" hidden>
+    <div id="banners"></div>
+    <h1 class="ttl" id="viewTitle">總覽</h1>
+    <p class="ttl-sub" id="viewSub"></p>
+    <div class="tools" id="viewTools"></div>
+    <div id="viewBody"></div>
+  </div>
+  <div class="inner auth" id="authView">
+    <h1 class="ttl" id="authTitle">登入</h1>
+    <p class="ttl-sub" id="authSub">請使用診所人員帳號登入</p>
+    <form class="panel auth-card" id="authForm" novalidate>
+      <div class="field" id="authEmailRow"><label for="authEmail">Email</label><input class="input en" id="authEmail" type="email" autocomplete="username" required></div>
+      <div class="field" id="authPassRow"><label for="authPass">密碼</label><input class="input" id="authPass" type="password" autocomplete="current-password" minlength="8" required></div>
+      <div class="field" id="authPass2Row" hidden><label for="authPass2">再輸入一次密碼</label><input class="input" id="authPass2" type="password" autocomplete="new-password" minlength="8"></div>
+      <p class="auth-msg" id="authMsg" role="status"></p>
+      <button class="btn primary auth-submit" type="submit" id="authSubmit">登入</button>
+      <div class="auth-links" id="authLinks"></div>
+    </form>
+  </div>
+</section>
+<footer class="ft">
+  <ul>
+    <li><button type="button" data-nav="dash">總覽</button></li>
+    <li><button type="button" data-nav="clients">病患管理</button></li>
+    <li><button type="button" data-nav="appts">預約排程</button></li>
+    <li><button type="button" data-nav="report">營運報表</button></li>
+    <li><button type="button" data-nav="settings">系統設定</button></li>
+  </ul>
+  <p>牙醫診所的病患管理與營運系統</p>
+  <div class="copy" id="copy">Copyright © All Rights Reserved.</div>
+</footer>
+<div id="menuHost"></div>
+<div id="overlay"></div>
+<div id="toastHost"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
